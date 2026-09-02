@@ -55,7 +55,12 @@ cd SIH
 # Setup backend & model dependencies
 # cd backend && pip install -r requirements.txt
 ```
+```In jupyter notebook files:
 
+import kagglehub
+path = kagglehub.dataset_download("ellipticco/elliptic-data-set")
+then copy the 3 CSVs from `path` into data/
+```
 ---
 
 ## 📄 License

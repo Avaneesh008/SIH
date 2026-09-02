@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.env.local
+.venv/
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Model checkpoints & large weights
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.pkl
+models_cache/
+checkpoints/
+
+# Data artifacts & raw datasets
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.sqlite
+*.db
+!data/.gitkeep
+
+# IDEs & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

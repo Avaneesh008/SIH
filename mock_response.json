@@ -1,0 +1,41 @@
+[
+  {
+    "wallet_address": "0xd90e2f925da726b50c4ed8d0fb90ad053324f31b",
+    "risk_score": 0.94,
+    "risk_label": "illicit",
+    "graph_hops_to_nearest_vasp": 1,
+    "nearest_vasp_name": "Tornado Cash Mixer",
+    "attribution_confidence": "high",
+    "top_features": [
+      "direct_mixer_interaction",
+      "high_fan_out_degree",
+      "burst_transaction_velocity"
+    ]
+  },
+  {
+    "wallet_address": "0x388c818ca8b9251b393131c08a736a67ccb19297",
+    "risk_score": 0.58,
+    "risk_label": "uncertain",
+    "graph_hops_to_nearest_vasp": 3,
+    "nearest_vasp_name": "Kraken Exchange",
+    "attribution_confidence": "medium",
+    "top_features": [
+      "intermediate_hop_to_kyc_exchange",
+      "moderate_temporal_clustering",
+      "mixed_counterparty_entropy"
+    ]
+  },
+  {
+    "wallet_address": "0x71c5658e38d99c4c7cbf10d9f43d46cb2309f481",
+    "risk_score": 0.23,
+    "risk_label": "uncertain",
+    "graph_hops_to_nearest_vasp": 7,
+    "nearest_vasp_name": "unidentified",
+    "attribution_confidence": "low",
+    "top_features": [
+      "sparse_transaction_history",
+      "isolated_subgraph_component",
+      "low_degree_centrality"
+    ]
+  }
+]

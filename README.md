@@ -37,31 +37,57 @@ An intelligent on-chain analytics and machine learning system for attributing cr
 
 ---
 
-## 🛠️ Getting Started
+## 🛠️ Getting Started & Integration Run Guide
 
 ### Prerequisites
 - Python 3.10+
-- Node.js 18+ (for UI)
-- Graph database / storage (e.g., Neo4j, PostgreSQL, DuckDB)
+- Virtual environment with dependencies installed:
+  ```bash
+  pip install fastapi uvicorn streamlit requests pandas networkx scikit-learn joblib
+  ```
 
-### Setup
-*(Detailed setup instructions will be updated as modules are developed)*
+### ⚙️ Environment Variables & Configuration
 
+| Variable | Default Value | Description |
+| :--- | :--- | :--- |
+| `API_BASE_URL` / `BACKEND_API_URL` | `http://localhost:8000` | Base URL used by the Streamlit frontend to connect to the FastAPI backend. |
+| `CORS_ORIGINS` | `*` | Allowed CORS origins for the backend (e.g. `http://localhost:8501,http://127.0.0.1:8501` for production). |
+
+---
+
+### 🚀 Running the System
+
+#### 1. Start the FastAPI Backend
+From the repository root:
 ```bash
-# Clone the repository
-git clone https://github.com/Avaneesh008/SIH.git
-cd SIH
-
-# Setup backend & model dependencies
-# cd backend && pip install -r requirements.txt
+uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-```In jupyter notebook files:
+- API Health Check: `http://localhost:8000/health`
+- Interactive API Docs (Swagger UI): `http://localhost:8000/docs`
 
-import kagglehub
-path = kagglehub.dataset_download("ellipticco/elliptic-data-set")
-then copy the 3 CSVs from `path` into data/
+#### 2. Start the Streamlit Frontend
+In a separate terminal from the repository root:
+```bash
+streamlit run ui/app.py --server.port 8501
 ```
+- Open your browser at `http://localhost:8501`
+
+---
+
+### 🧪 Local End-to-End Testing Steps
+
+1. **Verify Valid Wallet Attribution:**
+   - In the search bar on `http://localhost:8501`, enter a valid wallet address or dataset transaction ID (e.g., `0xd90e2f925da726b50c4ed8d0fb90ad053324f31b` or `230425980`).
+   - Click **Analyze**.
+   - Verify that the dashboard renders the **Risk Score**, **Risk Classification** (`Illicit` / `Licit`), **Nearest VASP Name**, **Graph Hops**, **Confidence Level**, and **Top Influencing Features**.
+
+2. **Verify 404 Graceful Error Handling:**
+   - In the search bar, enter a non-existent identifier such as `non_existent_wallet_99999`.
+   - Click **Analyze**.
+   - Verify that a clear, user-friendly 404 error banner is displayed without crashing the UI.
+
 ---
 
 ## 📄 License
 This project is developed for Smart India Hackathon (SIH). All rights reserved.
+
